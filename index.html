@@ -1,34 +1,3 @@
-<head>
-    <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Cesium.js"></script>
-    <link href="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-   </head>
-   
-   <body>
-     <div id="cesiumContainer"></div>
-     <script>
-       const viewer = new Cesium.Viewer('cesiumContainer', {
-         imageryProvider: false,
-         baseLayerPicker: false,
-         requestRenderMode: true,
-       });
-   
-       const tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-        url: "https://tile.googleapis.com/v1/3dtiles/root.json?key=AIzaSyBI4bhqjrpGwuCJLZCN0QQ25jK3lFH_qzQ",
-         showCreditsOnScreen: true,
-       }));
-         
-       viewer.camera.flyTo({
-       destination: new Cesium.Cartesian3.fromDegrees(5.1216481,52.0899879,
-         200
-      ),
-		     orientation : {
-			      heading : Cesium.Math.toRadians(0),
-			      pitch : Cesium.Math.toRadians(-60.0),
-			      roll : 0.0   
-			  }    
-      });
-   
-       viewer.scene.globe.show = false;
-     </script>
-   </body>
+Daily Quota exceeded :-(
+
+Check again tomorrow...
