@@ -7,3 +7,5 @@ demo 3D Tiles Paris: https://bertt.github.io/googlemaps3d/paris.html
 ![paris](https://github.com/bertt/googlemaps3d/assets/538812/21d84cd9-4071-464d-9481-32e2eadbc391)
 
 demo Aerial View API Austin: https://bertt.github.io/googlemaps3d/hotel.html
+
+demo 3D Tiles Amsterdam + custom 3D Tiles: https://bertt.github.io/googlemaps3d/3dtiles/index_45.html
