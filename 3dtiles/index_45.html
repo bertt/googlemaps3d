@@ -1,28 +1,29 @@
-<head>
+<!DOCTYPE html>
+<html lang="en">
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Cesium.js"></script>
-    <link href="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.105/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.110.1/Cesium.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.110.1/Widgets/widgets.min.css" rel="stylesheet">
    </head>
    
    <body>
      <div id="cesiumContainer"></div>
-     <script>
-       const viewer = new Cesium.Viewer('cesiumContainer', {
-         imageryProvider: false,
-         baseLayerPicker: false,
-         requestRenderMode: true,
-       });
-   
-       const terrain = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-         url: "https://tile.googleapis.com/v1/3dtiles/root.json?key=AIzaSyBI4bhqjrpGwuCJLZCN0QQ25jK3lFH_qzQ",
-         showCreditsOnScreen: true,
-       }));
-
+     <script type="module">
+      Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzZDFhZGJhMi00OWQ2LTQzOGQtOTY2Ni04MmIxOTVjZmMwZjQiLCJpZCI6NDc4OSwiaWF0IjoxNjk4Mzk4MjM2fQ.GBw4d-IZ-VW22FnqX_fCE2zoctdf8wVnVxlpW2aOq5A";
+      const viewer = new Cesium.Viewer("cesiumContainer", {
+          globe: false
+      });
+      try {
+        const tileset = await Cesium.createGooglePhotorealistic3DTileset();
+        viewer.scene.primitives.add(tileset);
+      } catch (error) {
+        console.log(`Failed to load tileset: ${error}`);
+      }       
        var modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(Cesium.Cartesian3.fromDegrees(4.892419,52.373158, 45.1026281869));
-       var model = viewer.scene.primitives.add(Cesium.Model.fromGltf({
+       var gltf = await Cesium.Model.fromGltfAsync({
           url : 'building.glb',
           modelMatrix : modelMatrix,
-        }));
+        });
+       var model = viewer.scene.primitives.add(gltf);
 
       // Lock camera to a point
       const center = new Cesium.Cartesian3.fromDegrees(4.8923002210,52.3731610577,50);
@@ -39,3 +40,4 @@
        viewer.scene.globe.show = false;
      </script>
    </body>
+</html>
